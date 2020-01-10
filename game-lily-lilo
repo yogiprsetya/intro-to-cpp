@@ -1,0 +1,454 @@
+#include<iostream>
+#include<conio.h>
+#include<stdio.h>
+using namespace std;
+
+class dataChar {
+	private:
+		char* name;
+		char* weapon;
+		int life, power, defends, magic, spirit;
+		
+	public:
+		void createChar(char* name) {
+			this->name=name;
+		}
+		
+		void createWeapon(char* weapon) {
+			this->weapon=weapon;
+		}
+		
+		void charLife(int life) {
+			this->life=life;
+		}
+		
+		void charPower(int power) {
+			this->power=power;
+		}
+		
+		void charDefends(int defends) {
+			this->defends=defends;
+		}
+		
+		void charMagic(int magic) {
+			this->magic=magic;
+		}
+		
+		void charSpirit(int spirit) {
+			this->spirit=spirit;
+		}
+		
+		char* returnChar() {
+			return name;
+		}
+		
+		char* returnWeapon() {
+			return weapon;
+		}
+		
+		int returnLife() {
+			return life;
+		}
+		
+		int returnPower() {
+			return power;
+		}
+		
+		int returnDefends() {
+			return defends;
+		}
+		
+		int returnMagic() {
+			return magic;
+		}
+		
+		int returnSpirit() {
+			return spirit;
+		}
+};
+
+class dataEnemy {
+	private:
+		char* boss;
+		int life, power;
+		
+	public:
+		void choseBoss(char* boss) {
+			this->boss=boss;
+		}
+		
+		void enemyLife(int life) {
+			this->life=life;
+		}
+		
+		void enemyPower(int power) {
+			this->power=power;
+		}
+		
+		char* returnBoss() {
+			return boss;
+		}
+		
+		int returnEnemyLife() {
+			return life;
+		}
+		
+		int returnEnemyPower() {
+			return power;
+		}
+};
+
+class dataWalet {
+	private:
+		int gold;
+		
+	public:
+		void setGold(int gold) {
+			this->gold=gold;
+		}
+		
+		int returnGold() {
+			return gold;
+		}
+};
+
+main() {
+	dataWalet DataWalet;
+	DataWalet.setGold(10000);
+	
+	mulai:
+		
+	dataChar DataChar;
+	dataEnemy DataEnemy;
+	
+	int choiceChar, choiceWeapon, exploreVillage, choiceEnemy, myAction;
+	
+	DataChar.charLife(100);
+	DataChar.charPower(10);
+	DataChar.charDefends(5);
+	DataChar.charMagic(7);
+	DataChar.charSpirit(25);
+	
+	DataEnemy.enemyLife(100);
+	DataEnemy.enemyPower(5);
+	
+	cout<<"Hallo ... Selamat Datang Di Game Si Lilo Dan Lily\n";
+	cout<<"Choice Your Character ...\n";
+	cout<<"1. Lilo\n";
+	cout<<"2. Lily	\n\n";
+	
+	cout<<"Your Choice...\n";
+	cout<<"Set Your Name In Here (1 or 2): ";
+	cin>>choiceChar;
+	
+	if(choiceChar == 1) {
+		DataChar.createChar("Lilo");
+	} else if (choiceChar == 2) {
+		DataChar.createChar("Lily");
+	} else {
+		cout<<"\n\nPilihan salah! Ulangi!\n";
+		goto mulai;
+	}
+	
+	system("cls");
+	weapon:
+	cout<<"Hallo "<<DataChar.returnChar();
+	cout<<", Set Find Your Equipment Weapon...\n";
+	cout<<"1. Sword\n";
+	cout<<"2. Axe\n";
+	cout<<"3. Arrow\n";
+	cout<<"4. Magic Wand\n";
+	cin>>choiceWeapon;
+	
+	if(choiceWeapon == 1) {
+		DataChar.createWeapon("Sword");
+	} else if (choiceWeapon == 2) {
+		DataChar.createWeapon("Axe");
+	} else if (choiceWeapon == 3) {
+		DataChar.createWeapon("Arrow");
+	} else if (choiceWeapon == 4) {
+		DataChar.createWeapon("Magic Wand");
+	} else {
+		cout<<"\n\nPilihan salah! Ulangi!\n";
+		goto weapon;
+	}
+	
+	system("cls");
+	cout<<"Wow, You Choice Weapon "<<DataChar.returnWeapon();
+	cout<<", That's A Greets Choice, Klik For Play Now and Start Your Game !!!\n\n";
+	
+	village:
+	cout<<"Village Of Esa Unggul University\n";
+	cout<<"1. Cek Status\n";
+	cout<<"2. Battle With Enemy\n";
+	cout<<"3. Set Full Your Life\n";
+	cout<<"4. Increase Your Status\n";
+	cout<<"5. Exit The Game\n";
+	cout<<"Select Your Choice In Here: ";
+	cin>>exploreVillage;
+	
+	if(exploreVillage == 1) {
+		cout<<"\nCek Your Status\n";
+		cout<<"Set Life    : "<<DataChar.returnLife()<<endl;
+		cout<<"Set Power   : "<<DataChar.returnPower()<<endl;
+		cout<<"Set Defends : "<<DataChar.returnDefends()<<endl;
+		cout<<"Set Magic   : "<<DataChar.returnMagic()<<endl;
+		cout<<"Set Spirit  : "<<DataChar.returnSpirit()<<endl<<endl;
+		cout<<"Sisa gold: "<<DataWalet.returnGold()<<endl;
+		cout<<"\nBack to Village, press 0: ";
+		cin>>exploreVillage;
+		
+		if(exploreVillage == 0) {
+			system("cls");
+			goto village;
+		}
+	} else if (exploreVillage == 2) {
+		enemy:
+		cout<<"\nBattle With Enamy\n";
+		cout<<"1. Boss Of Knight Tree\n";
+		cout<<"2. Boss Of Knight Of Pegasus\n";
+		cout<<"Choice Your Boss Enamy: ";
+		cin>>choiceEnemy;
+		
+		if (choiceEnemy == 1) {
+			DataEnemy.choseBoss("Boss Of Knight Tree");
+		} else if (choiceEnemy == 2) {
+			DataEnemy.choseBoss("Boss Of Knight Of Pegasus");
+		} else {
+			cout<<"\n\nPilihan salah! Ulangi!\n";
+			goto enemy;
+		}
+	
+	} else if (exploreVillage == 3) {
+		int resp;
+		
+		cout<<"\n\n1. Set Your Full Life (Harga: 1000g) ?\n";
+		cout<<"2. Set Your Half Life (Harga: 500g) ?\n";
+		cin>>resp;
+		
+		if (resp == 1 ) {
+			system("cls");
+			DataWalet.setGold(DataWalet.returnGold() - 1000);
+			DataChar.charLife(100);
+			cout<<"Set Full Life Success!\n";
+			cout<<"Sisa gold: "<<DataWalet.returnGold()<<endl<<endl;
+			goto village;
+		} else if (resp == 2 ) {
+			system("cls");
+			cout<<"Set Half Life Success!\n";
+			DataWalet.setGold(DataWalet.returnGold() - 500);
+			DataChar.charLife(50);
+			cout<<"Sisa gold: "<<DataWalet.returnGold()<<endl<<endl;
+			goto village;
+		} else {
+			system("cls");
+			goto village;
+		}
+		
+	} else if (exploreVillage == 4) {
+		char resp;
+		
+		system("cls");
+		cout<<"Pay : 5000g\n\n";
+		cout<<"Gets\n";
+ 		cout<<"Life     : 10\n";
+ 		cout<<"Power    : 10\n";
+ 		cout<<"Defends  : 5\n";
+ 		cout<<"Magic    : 8\n";
+ 		cout<<"Spirit   : 15\n\n";
+ 		cout<<"Increase Your Status ? Y/N ";
+ 		cin>>resp;
+ 		
+ 		if (resp == 'Y' || resp == 'y' ) {
+			system("cls");
+			DataWalet.setGold(DataWalet.returnGold() - 5000);
+			DataChar.charLife(110);
+			DataChar.charPower(20);
+			DataChar.charDefends(10);
+			DataChar.charMagic(15);
+			DataChar.charSpirit(35);
+			cout<<"Status Increase Success!\n\n";
+			cout<<"Sisa gold: "<<DataWalet.returnGold()<<endl<<endl;
+			goto village;
+		} else {
+			system("cls");
+			goto village;
+		}
+		
+	} else if (exploreVillage == 5) {
+		char nama[20], filepath[256];
+		
+		system("cls");
+		cout<<"Save game ...\n";
+		cout<<"Input your name: ";
+		cin>>nama;
+		
+		FILE * file;
+		
+		snprintf (filepath, sizeof(filepath), "%s.txt", nama);
+		file = fopen(filepath, "w");
+		fprintf(file, "Hero: %s \n", DataChar.returnChar());
+		fprintf(file, "Weapon: %s \n", DataChar.returnWeapon());
+		fprintf(file, "Life: %d \n", DataChar.returnLife());
+		fprintf(file, "Power: %d \n", DataChar.returnPower());
+		fprintf(file, "Defends: %d \n", DataChar.returnDefends());
+		fprintf(file, "Magic: %d \n", DataChar.returnMagic());
+		fprintf(file, "Spirit: %d \n", DataChar.returnSpirit());
+		fprintf(file, "Sisa gold: %d ", DataWalet.returnGold());
+		fclose (file);
+		cout<<"\n\n\nData saved, see you ...";
+		getch();
+	} else {
+		cout<<"\n\nPilihan salah! Ulangi!\n";
+		goto village;
+	};
+	
+	system("cls");
+	action:
+	cout<<"You Choice "<<DataEnemy.returnBoss()<<endl;
+	cout<<"1. Attack\n";
+	cout<<"2. Defends\n";
+	cout<<"3. Magic\n";
+	cout<<"4. Run\n";
+	cout<<"Select Your Action: ";
+	cin>>myAction;
+	
+	switch (myAction) {
+		case 1:
+			int i, attacks;
+		
+			cout<<"Set Your Attack (one or more): ";
+			cin>>attacks;
+			
+			if (attacks < 1) {
+				char resp;
+				DataChar.charLife(0);
+				
+				cout<<"\n\nYour Life = "<<DataChar.returnLife()<<endl;
+				cout<<"Hero is dead, and battle is over !!!\n\n";
+				cout<<"Press 0 to choose new Hero: ";
+				cin>>resp;
+				
+				if (resp != NULL) {
+					system("cls");
+					goto mulai;
+				}
+			} else {
+				char resp;
+				
+				for (i = 0; i < attacks; i++) {
+					DataEnemy.enemyLife(DataEnemy.returnEnemyLife() - DataChar.returnPower());
+					DataChar.charLife(DataChar.returnLife() - DataEnemy.returnEnemyPower());
+				};
+				
+				cout<<"\nYour Life Is: "<<DataChar.returnLife()<<endl;
+				cout<<"Attack Again ? Y/N ";
+				cin>>resp;
+				
+				if (resp == 'Y' || resp == 'y' ) {
+					system("cls");
+					goto action;
+				} else {
+					system("cls");
+					goto village;
+				}
+			}
+			
+		case 2:
+			char resp;
+			
+			DataChar.charLife(DataChar.returnLife() + 10);
+			DataChar.charSpirit(10);
+			DataChar.charMagic(5);
+			
+			cout<<"Life    : "<<DataChar.returnLife()<<endl;
+			cout<<"Spirit  : "<<DataChar.returnSpirit()<<endl;
+			cout<<"Magic   : "<<DataChar.returnMagic()<<endl;
+			cout<<"\nPress 0 to go home: ";
+			cin>>resp;
+			
+			if (resp != NULL) {
+				system("cls");
+				goto village;
+			}
+			
+		case 3:
+			int magic;
+			setMagic:
+			
+			cout<<"\n\nSet Your Magic\n";
+			cout<<"1. Magic Of Fire Burn (-1 magic. +7 power)\n";
+			cout<<"2. Magic Of Waterfall (-1 magic. +10 life)\n";
+			cout<<"3. Magic Of Earthquake (-2 magic. +15 power)\n";
+			cout<<"4. Magic Of Wind Thunder (-5 life. +20 power)\n\n";
+			cout<<"Choice Your Magic ? ";
+			cin>>magic;
+			system("cls");
+			
+			if (magic == 1) {
+				DataChar.charMagic(DataChar.returnMagic() - 1);
+				DataChar.charPower(DataChar.returnLife() + 7);
+				DataEnemy.enemyLife(DataEnemy.returnEnemyLife() - DataChar.returnLife());
+				
+				cout<<"Magic    : "<<DataChar.returnMagic()<<endl;
+				cout<<"Power    : "<<DataChar.returnPower()<<endl<<endl;
+				
+				goto action;
+			} else if (magic == 2) {
+				DataChar.charMagic(DataChar.returnMagic() - 1);
+				DataChar.charLife(DataChar.returnLife() + 10);
+				DataEnemy.enemyLife(DataEnemy.returnEnemyLife() - DataChar.returnLife());
+				
+				cout<<"Magic    : "<<DataChar.returnMagic()<<endl;
+				cout<<"Life    : "<<DataChar.returnLife()<<endl<<endl;
+				
+				goto action;
+			} else if (magic == 3) {
+				DataChar.charMagic(DataChar.returnMagic() - 2);
+				DataChar.charPower(DataChar.returnPower() + 15);
+				DataEnemy.enemyLife(DataEnemy.returnEnemyLife() - DataChar.returnLife());
+				
+				cout<<"Magic    : "<<DataChar.returnMagic()<<endl;
+				cout<<"Power    : "<<DataChar.returnPower()<<endl<<endl;
+				
+				goto action;
+			} else if (magic == 4) {
+				DataChar.charLife(DataChar.returnLife() - 5);
+				DataChar.charPower(DataChar.returnPower() + 20);
+				DataEnemy.enemyLife(DataEnemy.returnEnemyLife() - DataChar.returnLife());
+				
+				cout<<"Life    : "<<DataChar.returnLife()<<endl;
+				cout<<"Power    : "<<DataChar.returnPower()<<endl<<endl;
+				
+				goto action;
+			} else {
+				char resp;
+				DataChar.charMagic(0);
+				
+				cout<<"Magic Life = 0\n";
+				cout<<"Your Magic Isnt Work, Defends Now For Set Magic\n\n";
+				cout<<"Back Your Set Battle ? Y/N ";
+				cin>>resp;
+				
+				if (resp == 'Y' || resp == 'y' ) {
+					system("cls");
+					goto action;
+				} else {
+					system("cls");
+					goto village;
+				}
+			}
+			
+		case 4:
+			system("cls");
+			goto village;
+			
+		default:
+			cout<<"\n\nTidak Ada Pilihan Tersebut, Silahkan Masukan Pilihan Yang Benar, [enter]";
+	    	getch();
+	    	goto action;
+	}
+	
+	getch();
+    return 0;
+}
